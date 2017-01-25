@@ -9,7 +9,7 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 
 ## Installation
 
-Run `npm install` to install the application and build the node_modules folder
+Run `npm install` from the directory containing the package.json file to install the application and build the node_modules folder
 from the package.json file.
 
 ## Development server
