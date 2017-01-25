@@ -17,7 +17,7 @@ export class MovieService {
     getMovies() {
         return this._http.get(this._moviesUrl)
             .map(res => <IMovie[]> res.json())
-            .do(data => console.log(data))
+            .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);
     }
 
