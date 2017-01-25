@@ -4,8 +4,8 @@ import { IMovie } from './movie';
 import { MovieService } from './movie.service';
 
 @Component({
-    templateUrl: 'app/movies/movie-list.component.html',
-    styleUrls: ['app/movies/movie-list.component.css']
+    templateUrl: './movie-list.component.html',
+    styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
     pageTitle: string = 'Movie List';

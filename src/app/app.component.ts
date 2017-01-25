@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'mh-app',
+    selector: 'app-root',
     template: `
     <div class="container">
         <nav class="navbar navbar-default">

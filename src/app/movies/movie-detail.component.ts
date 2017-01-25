@@ -7,8 +7,8 @@ import { IMovie } from './movie';
 import { MovieService } from './movie.service';
 
 @Component({
-    templateUrl: 'app/movies/movie-detail.component.html',
-    styleUrls: ['app/movies/movie-detail.component.css']
+    templateUrl: './movie-detail.component.html',
+    styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit, OnDestroy {
     pageTitle: string = 'Movie Detail';
