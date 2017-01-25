@@ -13,7 +13,7 @@ import { MovieService } from './movie.service';
     SharedModule,
     RouterModule.forChild([
       { path: 'movies', component: MovieListComponent },
-      { path: 'movie/:id', component: MovieDetailComponent }
+      { path: 'movies/:id', component: MovieDetailComponent }
     ])
   ],
   declarations: [

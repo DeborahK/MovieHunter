@@ -48,7 +48,7 @@
                                  [src]="movie.imageurl" 
                                  [title]="movie.title">
                         </td>
-                        <td><a [routerLink]="['/movie', movie.movieId]">{{ movie.title }}</a></td>
+                        <td><a [routerLink]="['/movies', movie.movieId]">{{ movie.title }}</a></td>
                         <td>{{ movie.director }}</td>
                         <td>{{ movie.releaseDate | date}}</td>
                         <td>{{ movie.mpaa | uppercase}}</td>
