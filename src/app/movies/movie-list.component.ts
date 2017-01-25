@@ -14,13 +14,13 @@ export class MovieListComponent implements OnInit {
     movies: IMovie[];
     errorMessage: string;
 
-    constructor(private _movieService: MovieService) {
+    constructor(private movieService: MovieService) {
     }
 
     ngOnInit() { this.getMovies(); }
 
     getMovies() {
-        this._movieService.getMovies()
+        this.movieService.getMovies()
             .subscribe(
                 (movies: IMovie[]) => this.movies = movies,
                 (error: any) => this.errorMessage = <any>error);

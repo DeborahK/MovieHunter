@@ -16,13 +16,13 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     errorMessage: string;
     private sub: Subscription;
 
-    constructor(private _movieService: MovieService,
-                private _router: Router,
-                private _route: ActivatedRoute) {
+    constructor(private movieService: MovieService,
+                private router: Router,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
-        this.sub = this._route.params.subscribe(
+        this.sub = this.route.params.subscribe(
             params => {
                 let id = +params['id'];
                 this.getMovie(id);
@@ -35,13 +35,13 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     }
 
     getMovie(id: number) {
-        this._movieService.getMovie(id)
+        this.movieService.getMovie(id)
             .subscribe(
                 (movie: IMovie) => this.movie = movie,
                 (error: any) => this.errorMessage = <any>error);
     }
 
     onBack() {
-        this._router.navigate(['/movies']);
+        this.router.navigate(['/movies']);
     }
 }
