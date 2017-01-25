@@ -14,8 +14,7 @@ export class MovieListComponent implements OnInit {
     movies: IMovie[];
     errorMessage: string;
 
-    constructor(private movieService: MovieService) {
-    }
+    constructor(private movieService: MovieService) { }
 
     ngOnInit() { this.getMovies(); }
 

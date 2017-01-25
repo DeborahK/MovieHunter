@@ -1,7 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
-import { Subscription }       from 'rxjs/Subscription';
 
 import { IMovie } from './movie';
 import { MovieService } from './movie.service';
@@ -10,11 +8,10 @@ import { MovieService } from './movie.service';
     templateUrl: './movie-detail.component.html',
     styleUrls: ['./movie-detail.component.css']
 })
-export class MovieDetailComponent implements OnInit, OnDestroy {
+export class MovieDetailComponent implements OnInit {
     pageTitle: string = 'Movie Detail';
     movie: IMovie;
     errorMessage: string;
-    private sub: Subscription;
 
     constructor(private movieService: MovieService,
                 private router: Router,
@@ -22,16 +19,12 @@ export class MovieDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.sub = this.route.params.subscribe(
+        this.route.params.subscribe(
             params => {
                 let id = +params['id'];
                 this.getMovie(id);
             }
         );
-    }
-
-    ngOnDestroy() {
-        this.sub.unsubscribe();
     }
 
     getMovie(id: number) {
