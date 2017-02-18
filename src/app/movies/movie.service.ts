@@ -14,16 +14,16 @@ export class MovieService {
 
     constructor(private http: Http) { }
 
-    getMovies() {
+    getMovies(): Observable<IMovie[]> {
         return this.http.get(this.moviesUrl)
-            .map(res => <IMovie[]> res.json())
+            .map((res: Response) => <IMovie[]> res.json())
             .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    getMovie(id: number) {
+    getMovie(id: number): Observable<IMovie> {
         return this.http.get(this.moviesUrl)
-            .map(res => this.handleMap(res, id))
+            .map((res: Response) => this.handleMap(res, id))
             .do(data => console.log('Data: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
