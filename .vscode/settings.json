@@ -10,5 +10,5 @@
     "files.autoSave": "afterDelay",
     
     // Adjust the zoom level of the window. The original size is 0 and each increment above or below represents zooming 20% larger or smaller.
-    "window.zoomLevel": 4
+    "window.zoomLevel": 2
 }

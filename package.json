@@ -1,48 +1,41 @@
 {
   "name": "movie-hunter",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Sample Angular Application",
   "license": "MIT",
-  "angular-cli": {},
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "lint": "tslint \"src/**/*.ts\"",
-    "test": "ng test",
-    "pree2e": "webdriver-manager update --standalone false --gecko false",
-    "e2e": "protractor"
+    "build": "tsc -p src/",
+    "build:watch": "tsc -p src/ -w",
+    "serve": "lite-server -c=bs-config.json",
+    "prestart": "npm run build",
+    "start": "concurrently \"npm run build:watch\" \"npm run serve\"",
+    "lint": "tslint ./src/**/*.ts -t verbose"
   },
-  "private": true,
   "dependencies": {
-    "@angular/common": "^2.3.1",
-    "@angular/compiler": "^2.3.1",
-    "@angular/core": "^2.3.1",
-    "@angular/forms": "^2.3.1",
-    "@angular/http": "^2.3.1",
-    "@angular/platform-browser": "^2.3.1",
-    "@angular/platform-browser-dynamic": "^2.3.1",
-    "@angular/router": "^3.3.1",
+    "@angular/common": "^2.4.0",
+    "@angular/compiler": "^2.4.0",
+    "@angular/core": "^2.4.0",
+    "@angular/forms": "^2.4.0",
+    "@angular/http": "^2.4.0",
+    "@angular/platform-browser": "^2.4.0",
+    "@angular/platform-browser-dynamic": "^2.4.0",
+    "@angular/router": "^3.4.0",
+
+    "systemjs": "0.19.40",
     "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.8",
     "rxjs": "^5.0.1",
-    "ts-helpers": "^1.1.1",
-    "zone.js": "^0.7.2",
+    "zone.js": "^0.7.4",
     "bootstrap": "^3.3.7"
   },
   "devDependencies": {
-    "@angular/compiler-cli": "^2.3.1",
-    "@types/jasmine": "2.5.38",
-    "@types/node": "^6.0.42",
-    "angular-cli": "1.0.0-beta.24",
-    "codelyzer": "~2.0.0-beta.1",
-    "jasmine-core": "2.5.2",
-    "jasmine-spec-reporter": "2.5.0",
-    "karma": "1.2.0",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-cli": "^1.0.1",
-    "karma-jasmine": "^1.0.2",
-    "karma-remap-istanbul": "^0.2.1",
-    "protractor": "~4.0.13",
-    "ts-node": "1.2.1",
-    "tslint": "^4.0.2",
-    "typescript": "~2.0.3"
-  }
+    "concurrently": "^3.2.0",
+    "lite-server": "^2.2.2",
+    "typescript": "~2.0.10",
+    
+    "tslint": "^3.15.1",
+
+    "@types/node": "^6.0.46"
+  },
+  "repository": {}
 }
