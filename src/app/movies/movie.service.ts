@@ -10,7 +10,7 @@ import { IMovie } from './movie';
 
 @Injectable()
 export class MovieService {
-    private moviesUrl = 'app/movies/movies.json';
+    private moviesUrl = '/api/movies/movies.json';
 
     constructor(private http: Http) { }
 
@@ -37,6 +37,21 @@ export class MovieService {
 
     private handleMap(res: any, id: number) {
         let data = <IMovie[]> res.json();
+        // Return an initialized object
+        if (id === 0) {
+            return {
+                'approvalRating': null,
+                'description': '',
+                'director': '',
+                'imageurl': '',
+                'movieId': 0,
+                'mpaa': '',
+                'price': null,
+                'releaseDate': '',
+                'starRating': null,
+                'title': ''
+            };
+        }
         let filtered = data.filter(m => m.movieId === id);
         return <IMovie> filtered[0];
     }

@@ -7,8 +7,5 @@
         "**/*.map": true
     },
     // Controls auto save of dirty files. Accepted values:  "off", "afterDelay", "onFocusChange". If set to "afterDelay" you can configure the delay in "files.autoSaveDelay".
-    "files.autoSave": "afterDelay",
-    
-    // Adjust the zoom level of the window. The original size is 0 and each increment above or below represents zooming 20% larger or smaller.
-    "window.zoomLevel": 2
+    "files.autoSave": "afterDelay"
 }
