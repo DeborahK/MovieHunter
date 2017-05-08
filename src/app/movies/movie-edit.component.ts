@@ -13,7 +13,6 @@ export class MovieEditComponent implements OnInit {
     pageTitle: string = 'Edit Movie';
     movie: IMovie;
     errorMessage: string;
-    enterDescription: boolean = true;
 
     constructor(private _movieService: MovieService,
         private _router: Router,

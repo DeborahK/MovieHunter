@@ -9,7 +9,7 @@
               (ngSubmit)="saveMovie(editForm)">
             <fieldset>
                 <div class="form-group" 
-                     [ngClass]="{'has-error': titleVar.touched && !titleVar.valid }">
+                     [ngClass]="{'has-error': (titleVar.touched || titleVar.dirty) && !titleVar.valid }">
                     <label class="col-md-2 control-label" 
                            for="inputMovieTitle">Movie Title</label>
 
@@ -24,7 +24,7 @@
                                 [(ngModel)] = "movie.title"
                                 name="title"
                                 #titleVar = "ngModel" />
-                        <span class="help-block" *ngIf="titleVar.touched && titleVar.errors">
+                        <span class="help-block" *ngIf="(titleVar.touched || titleVar.dirty) && titleVar.errors">
                             <span *ngIf="titleVar.errors.required">
                                 Please enter a movie title.
                             </span>
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="form-group" 
-                     [ngClass]="{'has-error': directorVar.touched && !directorVar.valid }">
+                     [ngClass]="{'has-error': (directorVar.touched || directorVar.dirty) && !directorVar.valid }">
                     <label class="col-md-2 control-label" for="inputMovieDirector">Director</label>
 
                     <div class="col-md-8">
@@ -53,7 +53,7 @@
                                 [(ngModel)] = "movie.director"
                                 name="director"
                                 #directorVar = "ngModel" />
-                        <span class="help-block" *ngIf="directorVar.touched && directorVar.errors">
+                        <span class="help-block" *ngIf="(directorVar.touched || directorVar.dirty) && directorVar.errors">
                             <span *ngIf="directorVar.errors.required">
                                 Please enter the director's name.
                             </span>
@@ -68,7 +68,7 @@
                 </div>
                 
                 <div class="form-group" 
-                     [ngClass]="{'has-error': starRatingVar.touched && !starRatingVar.valid}">
+                     [ngClass]="{'has-error': (starRatingVar.touched || starRatingVar.dirty) && !starRatingVar.valid}">
                     <label class="col-md-2 control-label" 
                            for="inputStarRating">Star Rating (1-5)</label>
 
@@ -81,24 +81,13 @@
                                 [(ngModel)] = "movie.starRating"
                                 name="starRating"
                                 #starRatingVar = "ngModel" />
-                        <span class="help-block" *ngIf="starRatingVar.touched && starRatingVar.errors">
+                        <span class="help-block" *ngIf="(starRatingVar.touched || starRatingVar.dirty) && starRatingVar.errors">
                             <span *ngIf="starRatingVar.errors.range">
                                 Rate the movie between 1 (lowest) and 5 (highest).
                             </span>
                         </span>
                     </div>
                 </div>
-
-                <!--
-                <div class="form-group">
-                    <div class="col-md-8">
-                        <input type="checkbox"
-                            [(ngModel)]="enterDescription" 
-                            [ngModelOptions]="{standalone: true}">
-                        <label  for="inputEnterDescription">Enter description</label>
-                    </div>
-                </div>
-                -->
 
                 <div class="form-group" *ngIf="enterDescription">
                     <label class="col-md-2 control-label" 
