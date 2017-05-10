@@ -1,5 +1,5 @@
 import { Attribute, Directive, forwardRef } from '@angular/core';
-import { NG_VALIDATORS, AbstractControl } from '@angular/forms';
+import { NG_VALIDATORS, Validator, AbstractControl, ValidatorFn } from '@angular/forms';
 
 import { NumberValidators } from './number.validator';
 
@@ -9,8 +9,8 @@ import { NumberValidators } from './number.validator';
         { provide: NG_VALIDATORS, useExisting: forwardRef(() => RangeValidatorDirective), multi: true }
   ]
 })
-export class RangeValidatorDirective {
-  private validator: any;
+export class RangeValidatorDirective implements Validator {
+  private validator: ValidatorFn;
 
   constructor(@Attribute('mhRange') range: string) {
     const arr = range.split(',');
