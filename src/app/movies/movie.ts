@@ -1,10 +1,10 @@
 /* Defines the movie entity */
 export interface IMovie {
+    id: number;
     approvalRating: number;
     description: string;
     director: string;
     imageurl: string;
-    movieId: number;
     mpaa: string;
     price: number;
     releaseDate: string;

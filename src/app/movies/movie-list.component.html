@@ -48,18 +48,18 @@
                                  [src]="movie.imageurl" 
                                  [title]="movie.title">
                         </td>
-                        <td><a [routerLink]="['/movies', movie.movieId]">{{ movie.title }}</a></td>
+                        <td><a [routerLink]="['/movies', movie.id]">{{ movie.title }}</a></td>
                         <td>{{ movie.director }}</td>
                         <td>{{ movie.releaseDate | date}}</td>
                         <td>{{ movie.mpaa | uppercase}}</td>
                         <td>{{ movie.price | currency:'USD':true}}</td>
                         <td>
-                            <app-star [rating]="movie.starRating"></app-star>
+                            <mh-star [rating]="movie.starRating"></mh-star>
                         </td>
                         <td>{{ movie.approvalRating | percent: '1.0-0'}}</td>
                         <td>
                             <a class="btn btn-primary" 
-                               [routerLink]="['/movies', movie.movieId, 'edit']">
+                               [routerLink]="['/movies', movie.id, 'edit']">
                                 Edit
                             </a>
                         </td>
