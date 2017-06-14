@@ -11,6 +11,7 @@ import { MovieEditReactiveComponent } from './movie-edit-reactive.component';
 
 import { MovieFilterPipe } from './movie-filter.pipe';
 import { MovieService } from './movie.service';
+import { MovieParameterService } from 'app/movies/movie-parameter.service';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { MovieService } from './movie.service';
     MovieFilterPipe
   ],
   providers: [
-    MovieService
+    MovieService,
+    MovieParameterService
   ]
 })
 export class MovieModule {}

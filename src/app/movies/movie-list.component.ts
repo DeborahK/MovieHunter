@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { IMovie } from './movie';
 import { MovieService } from './movie.service';
+import { MovieParameterService } from 'app/movies/movie-parameter.service';
 
 @Component({
     templateUrl: './movie-list.component.html',
@@ -9,12 +10,25 @@ import { MovieService } from './movie.service';
 })
 export class MovieListComponent implements OnInit {
     pageTitle: string = 'Movie List';
-    listFilter: string = '';
-    showImage: boolean = false;
     movies: IMovie[];
     errorMessage: string;
 
-    constructor(private movieService: MovieService) { }
+    get listFilter() {
+        return this.movieParameterService.filterBy;
+    }
+    set listFilter(value: string) {
+        this.movieParameterService.filterBy = value;
+    }
+
+    get showImage() {
+        return this.movieParameterService.displayPosters;
+    }
+    set showImage(value: boolean) {
+        this.movieParameterService.displayPosters = value;
+    }
+
+    constructor(private movieService: MovieService,
+                private movieParameterService: MovieParameterService) { }
 
     ngOnInit() { this.getMovies(); }
 
