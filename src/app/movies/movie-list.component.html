@@ -40,7 +40,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let movie of movies| movieFilter:listFilter'>
+                    <tr *ngFor='let movie of filteredMovies'>
                         <td>
                             <img *ngIf="showImage && movie.imageurl" 
                                  [style.width.px]="50"
@@ -51,7 +51,7 @@
                         <td><a [routerLink]="['/movies', movie.id]">{{ movie.title }}</a></td>
                         <td>{{ movie.director }}</td>
                         <td>{{ movie.releaseDate | date}}</td>
-                        <td>{{ movie.mpaa | uppercase}}</td>
+                        <td>{{ movie.mpaa | uppercase | convertToSpaces: '-'}}</td>
                         <td>{{ movie.price | currency:'USD':true}}</td>
                         <td>
                             <mh-star [rating]="movie.starRating"></mh-star>

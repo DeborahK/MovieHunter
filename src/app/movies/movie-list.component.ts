@@ -10,6 +10,7 @@ import { MovieParameterService } from 'app/movies/movie-parameter.service';
 })
 export class MovieListComponent implements OnInit {
     pageTitle: string = 'Movie List';
+    filteredMovies: IMovie[];
     movies: IMovie[];
     errorMessage: string;
 
@@ -18,6 +19,7 @@ export class MovieListComponent implements OnInit {
     }
     set listFilter(value: string) {
         this.movieParameterService.filterBy = value;
+        this.filteredMovies = this.listFilter ? this.performFilter(this.listFilter) : this.movies;
     }
 
     get showImage() {
@@ -35,11 +37,20 @@ export class MovieListComponent implements OnInit {
     getMovies() {
         this.movieService.getMovies()
             .subscribe(
-                (movies: IMovie[]) => this.movies = movies,
+                (movies: IMovie[]) => {
+                    this.movies = movies;
+                    this.filteredMovies = movies;
+                },
                 (error: any) => this.errorMessage = <any>error);
     }
 
-    toggleImage(): void {
+    performFilter(filterBy: string): IMovie[] {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.movies.filter((movie: IMovie) =>
+              movie.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    }
+
+        toggleImage(): void {
         this.showImage = !this.showImage;
     }
 }

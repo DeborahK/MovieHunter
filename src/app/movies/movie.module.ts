@@ -9,7 +9,6 @@ import { MovieDetailComponent } from './movie-detail.component';
 import { MovieEditComponent } from './movie-edit.component';
 import { MovieEditReactiveComponent } from './movie-edit-reactive.component';
 
-import { MovieFilterPipe } from './movie-filter.pipe';
 import { MovieService } from './movie.service';
 import { MovieParameterService } from 'app/movies/movie-parameter.service';
 
@@ -28,8 +27,7 @@ import { MovieParameterService } from 'app/movies/movie-parameter.service';
     MovieListComponent,
     MovieDetailComponent,
     MovieEditComponent,
-    MovieEditReactiveComponent,
-    MovieFilterPipe
+    MovieEditReactiveComponent
   ],
   providers: [
     MovieService,
