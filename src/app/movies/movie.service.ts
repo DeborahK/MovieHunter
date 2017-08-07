@@ -1,43 +1,43 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/throw';
+
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 
 import { IMovie } from './movie';
 
 @Injectable()
 export class MovieService {
-    private moviesUrl = '/api/movies/movies.json';
+    private moviesUrl = './api/movies/movies.json';
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
 
     getMovies(): Observable<IMovie[]> {
-        return this.http.get(this.moviesUrl)
-            .map((res: Response) => <IMovie[]> res.json())
+        return this.http.get<IMovie[]>(this.moviesUrl)
             .do(data => console.log(JSON.stringify(data)))
             .catch(this.handleError);
     }
 
     getMovie(id: number): Observable<IMovie> {
-        return this.http.get(this.moviesUrl)
-            .map((res: Response) => this.handleMap(res, id))
+        return this.http.get<IMovie[]>(this.moviesUrl)
+            .map((movies: IMovie[]) => this.handleMap(movies, id))
             .do(data => console.log('Data: ' + JSON.stringify(data)))
             .catch(this.handleError);
     }
 
-    private handleError(error: Response) {
+    private handleError(err: HttpErrorResponse) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+        const errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+        console.error(errorMessage);
+        return Observable.throw(errorMessage);
     }
 
-    private handleMap(res: any, id: number) {
-        const data = <IMovie[]> res.json();
-
+    private handleMap(movies: IMovie[], id: number) {
         // Return an initialized object
         if (id === 0) {
             return {
@@ -53,7 +53,6 @@ export class MovieService {
                 'title': ''
             };
         }
-        const filtered = data.filter(m => m.id === id);
-        return <IMovie> filtered[0];
+        return movies.find(m => m.id === id);
     }
 }
