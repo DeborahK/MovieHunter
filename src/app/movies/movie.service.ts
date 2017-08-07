@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
+import { ErrorObservable } from "rxjs/observable/ErrorObservable";
 import 'rxjs/add/observable/throw';
 
 import 'rxjs/add/operator/catch';
@@ -29,7 +30,7 @@ export class MovieService {
             .catch(this.handleError);
     }
 
-    private handleError(err: HttpErrorResponse) {
+    private handleError(err: HttpErrorResponse): ErrorObservable {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
         const errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
@@ -37,7 +38,7 @@ export class MovieService {
         return Observable.throw(errorMessage);
     }
 
-    private handleMap(movies: IMovie[], id: number) {
+    private handleMap(movies: IMovie[], id: number): IMovie {
         // Return an initialized object
         if (id === 0) {
             return {

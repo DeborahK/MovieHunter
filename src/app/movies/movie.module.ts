@@ -10,7 +10,7 @@ import { MovieEditComponent } from './movie-edit.component';
 import { MovieEditReactiveComponent } from './movie-edit-reactive.component';
 
 import { MovieService } from './movie.service';
-import { MovieParameterService } from 'app/movies/movie-parameter.service';
+import { MovieParameterService } from './movie-parameter.service';
 
 @NgModule({
   imports: [

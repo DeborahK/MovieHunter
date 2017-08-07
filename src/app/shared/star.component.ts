@@ -9,7 +9,7 @@ export class StarComponent implements OnChanges {
     @Input() rating: number;
     starPercent: string;
 
-    ngOnChanges() {
+    ngOnChanges(): void {
         // Convert x out of 5 starts
         // to y out of 86px width
         this.starPercent = (this.rating * 86 / 5) + 'px';

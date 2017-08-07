@@ -23,14 +23,14 @@ export class MovieDetailComponent implements OnInit {
         this.getMovie(id);
     }
 
-    getMovie(id: number) {
+    getMovie(id: number): void {
         this.movieService.getMovie(id)
             .subscribe(
                 (movie: IMovie) => this.movie = movie,
                 (error: any) => this.errorMessage = <any>error);
     }
 
-    onBack() {
+    onBack(): void {
         this.router.navigate(['/movies']);
     }
 }
