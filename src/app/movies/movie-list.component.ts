@@ -39,7 +39,7 @@ export class MovieListComponent implements OnInit {
             .subscribe(
                 (movies: IMovie[]) => {
                     this.movies = movies;
-                    this.filteredMovies = movies;
+                    this.filteredMovies = this.performFilter(this.listFilter);
                 },
                 (error: any) => this.errorMessage = <any>error);
     }
