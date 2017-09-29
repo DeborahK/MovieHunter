@@ -19,7 +19,7 @@ export class MovieListComponent implements OnInit {
     }
     set listFilter(value: string) {
         this.movieParameterService.filterBy = value;
-        this.filteredMovies = this.listFilter ? this.performFilter(this.listFilter) : this.movies;
+        this.filteredMovies = this.performFilter(this.listFilter);
     }
 
     get showImage(): boolean {
@@ -37,17 +37,21 @@ export class MovieListComponent implements OnInit {
     getMovies(): void {
         this.movieService.getMovies()
             .subscribe(
-                (movies: IMovie[]) => {
-                    this.movies = movies;
-                    this.filteredMovies = movies;
-                },
-                (error: any) => this.errorMessage = <any>error);
+            (movies: IMovie[]) => {
+                this.movies = movies;
+                this.filteredMovies = this.performFilter(this.listFilter);
+            },
+            (error: any) => this.errorMessage = <any>error);
     }
 
     performFilter(filterBy: string): IMovie[] {
-        filterBy = filterBy.toLocaleLowerCase();
-        return this.movies.filter((movie: IMovie) =>
-              movie.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
+        if (this.listFilter) {
+            filterBy = filterBy.toLocaleLowerCase();
+            return this.movies.filter((movie: IMovie) =>
+                movie.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
+        } else {
+            return this.movies;
+        }
     }
 
     toggleImage(): void {
