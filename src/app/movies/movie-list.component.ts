@@ -45,7 +45,7 @@ export class MovieListComponent implements OnInit {
     }
 
     performFilter(filterBy: string): IMovie[] {
-        if (this.listFilter) {
+        if (filterBy) {
             filterBy = filterBy.toLocaleLowerCase();
             return this.movies.filter((movie: IMovie) =>
                 movie.title.toLocaleLowerCase().indexOf(filterBy) !== -1);
