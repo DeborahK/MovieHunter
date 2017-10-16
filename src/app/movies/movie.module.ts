@@ -6,8 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 
 import { MovieListComponent } from './movie-list.component';
 import { MovieDetailComponent } from './movie-detail.component';
-import { MovieEditComponent } from './movie-edit.component';
-import { MovieEditReactiveComponent } from './movie-edit-reactive.component';
+import { MovieEditComponent } from './edit/movie-edit.component';
+import { MovieEditReactiveComponent } from './edit/movie-edit-reactive.component';
 
 import { MovieService } from './movie.service';
 import { MovieParameterService } from './movie-parameter.service';

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { IMovie } from './movie';
-import { MovieService } from './movie.service';
+import { IMovie } from '../movie';
+import { MovieService } from '../movie.service';
 
-import { NumberValidators } from '../shared/number.validator';
+import { NumberValidators } from '../../shared/number.validator';
 
 @Component({
     templateUrl: './movie-edit-reactive.component.html'

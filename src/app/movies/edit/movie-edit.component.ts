@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { IMovie } from './movie';
-import { MovieService } from './movie.service';
-import { RangeValidatorDirective } from '../shared/range.directive';
+import { IMovie } from '../movie';
+import { MovieService } from '../movie.service';
+import { RangeValidatorDirective } from '../../shared/range.directive';
 
 @Component({
     templateUrl: './movie-edit.component.html'
