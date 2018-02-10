@@ -3,11 +3,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import 'rxjs/add/observable/throw';
+import { of } from 'rxjs/observable/of';
+import { _throw } from 'rxjs/observable/throw';
 
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
+import { catchError, tap, map } from 'rxjs/operators';
 
 import { IMovie } from './movie';
 
@@ -18,16 +17,18 @@ export class MovieService {
     constructor(private http: HttpClient) { }
 
     getMovies(): Observable<IMovie[]> {
-        return this.http.get<IMovie[]>(this.moviesUrl)
-            .do(data => console.log(JSON.stringify(data)))
-            .catch(this.handleError);
+        return this.http.get<IMovie[]>(this.moviesUrl).pipe(
+            tap(data => console.log(JSON.stringify(data))),
+            catchError(this.handleError)
+        );
     }
 
     getMovie(id: number): Observable<IMovie> {
-        return this.http.get<IMovie[]>(this.moviesUrl)
-            .map((movies: IMovie[]) => this.handleMap(movies, id))
-            .do(data => console.log('Data: ' + JSON.stringify(data)))
-            .catch(this.handleError);
+        return this.http.get<IMovie[]>(this.moviesUrl).pipe(
+            map((movies: IMovie[]) => this.handleMap(movies, id)),
+            tap(data => console.log('Data: ' + JSON.stringify(data))),
+            catchError(this.handleError)
+        );
     }
 
     private handleError(err: HttpErrorResponse): ErrorObservable {
@@ -56,4 +57,5 @@ export class MovieService {
         }
         return movies.find(m => m.id === id);
     }
+
 }

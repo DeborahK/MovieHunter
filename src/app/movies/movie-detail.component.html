@@ -35,16 +35,19 @@
         </div>
         <div class="row">
             <div class="col-md-2">Average DVD Price: </div>
-            <div class="col-md-10">{{ movie.price | currency:'USD':true }}</div>
+            <div class="col-md-10">{{ movie.price | currency:'USD':'symbol' }}</div>
         </div>
     </div>
 
     <div class="panel-footer">
-        <a class="btn btn-default" (click)="onBack()" style="width:80px">
+        <a class="btn btn-default" (click)="onBack()">
             <i class="glyphicon glyphicon-chevron-left"></i> Back
         </a>
         <a class="btn btn-primary" style="width:80px;margin-left:10px" [routerLink]="['/movies', movie.id, 'edit']">
             Edit
+        </a>
+        <a class="btn btn-primary" [routerLink]="['/movies', movie.id, 'editReactive']">
+            Edit Reactive
         </a>
     </div>
 </div>
