@@ -4,8 +4,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { of } from 'rxjs/observable/of';
-import { _throw } from 'rxjs/observable/throw';
-
 import { catchError, tap, map } from 'rxjs/operators';
 
 import { IMovie } from './movie';
@@ -36,23 +34,23 @@ export class MovieService {
         // instead of just logging it to the console
         const errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
         console.error(errorMessage);
-        return Observable.throw(errorMessage);
+        return new ErrorObservable(errorMessage);
     }
 
     private handleMap(movies: IMovie[], id: number): IMovie {
         // Return an initialized object
         if (id === 0) {
             return {
-                'id': 0,
-                'approvalRating': null,
-                'description': '',
-                'director': '',
-                'imageurl': '',
-                'mpaa': '',
-                'price': null,
-                'releaseDate': '',
-                'starRating': null,
-                'title': ''
+                id: 0,
+                approvalRating: null,
+                description: '',
+                director: '',
+                imageurl: '',
+                mpaa: '',
+                price: null,
+                releaseDate: '',
+                starRating: null,
+                title: ''
             };
         }
         return movies.find(m => m.id === id);
