@@ -49,5 +49,7 @@ export class MovieEditComponent implements OnInit {
         if (editForm.dirty && editForm.valid) {
             alert(`Movie: ${JSON.stringify(editForm.value)}`);
         }
+        // Navigate back to the movie list
+        this.router.navigate(['/movies']);
     }
 }
