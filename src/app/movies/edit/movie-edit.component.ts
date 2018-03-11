@@ -20,9 +20,9 @@ export class MovieEditComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(
+        this.route.paramMap.subscribe(
             params => {
-                const id = +params['id'];
+                const id = +params.get('id');
                 this.getMovie(id);
             }
         );
