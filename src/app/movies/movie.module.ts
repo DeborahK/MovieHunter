@@ -9,9 +9,6 @@ import { MovieDetailComponent } from './movie-detail.component';
 import { MovieEditComponent } from './edit/movie-edit.component';
 import { MovieEditReactiveComponent } from './edit/movie-edit-reactive.component';
 
-import { MovieService } from './movie.service';
-import { MovieParameterService } from './movie-parameter.service';
-
 @NgModule({
   imports: [
     SharedModule,
@@ -28,10 +25,6 @@ import { MovieParameterService } from './movie-parameter.service';
     MovieDetailComponent,
     MovieEditComponent,
     MovieEditReactiveComponent
-  ],
-  providers: [
-    MovieService,
-    MovieParameterService
   ]
 })
 export class MovieModule {}
