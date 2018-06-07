@@ -21,5 +21,5 @@ import { Component } from '@angular/core';
      `
 })
 export class AppComponent {
-    pageTitle: string = 'InStep Movie Hunter';
+    pageTitle = 'InStep Movie Hunter';
 }

@@ -9,7 +9,7 @@ import { MovieParameterService } from './movie-parameter.service';
     styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
-    pageTitle: string = 'Movie List';
+    pageTitle = 'Movie List';
     filteredMovies: IMovie[];
     movies: IMovie[];
     errorMessage: string;

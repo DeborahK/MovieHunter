@@ -10,7 +10,7 @@ import { RangeValidatorDirective } from '../../shared/range.directive';
     templateUrl: './movie-edit.component.html'
 })
 export class MovieEditComponent implements OnInit {
-    pageTitle: string = 'Edit Movie';
+    pageTitle = 'Edit Movie';
     movie: IMovie;
     errorMessage: string;
 

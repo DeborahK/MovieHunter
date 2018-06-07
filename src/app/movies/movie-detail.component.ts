@@ -9,7 +9,7 @@ import { MovieService } from './movie.service';
     styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
-    pageTitle: string = 'Movie Detail';
+    pageTitle = 'Movie Detail';
     movie: IMovie;
     errorMessage: string;
 

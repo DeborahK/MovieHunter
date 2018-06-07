@@ -11,7 +11,7 @@ import { NumberValidators } from '../../shared/number.validator';
     templateUrl: './movie-edit-reactive.component.html'
 })
 export class MovieEditReactiveComponent implements OnInit {
-    pageTitle: string = 'Edit Movie';
+    pageTitle = 'Edit Movie';
     editForm: FormGroup;
     formError: { [id: string]: string };
     private validationMessages: { [id: string]: { [id: string]: string } };

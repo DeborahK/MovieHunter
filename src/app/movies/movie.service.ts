@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
-import { _throw as throwError } from 'rxjs/observable/throw';
 
 import { IMovie } from './movie';
 
@@ -29,7 +27,7 @@ export class MovieService {
         );
     }
 
-    private handleError(err: HttpErrorResponse) {
+    private handleError(err) {
         // in a real world app, we may send the server to some remote logging infrastructure
         // instead of just logging it to the console
         const errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
