@@ -27,4 +27,4 @@ import { MovieEditReactiveComponent } from './edit/movie-edit-reactive.component
     MovieEditReactiveComponent
   ]
 })
-export class MovieModule {}
+export class MovieModule { }

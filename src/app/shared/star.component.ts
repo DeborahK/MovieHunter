@@ -11,7 +11,7 @@ export class StarComponent implements OnChanges {
 
     ngOnChanges(): void {
         // Convert x out of 5 starts
-        // to y out of 86px width
-        this.starPercent = (this.rating * 86 / 5) + 'px';
+        // to y out of 70px width
+        this.starPercent = (this.rating * 70 / 5) + 'px';
     }
 }
