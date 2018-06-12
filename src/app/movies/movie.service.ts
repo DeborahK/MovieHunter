@@ -5,10 +5,9 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
 import { IMovie } from './movie';
-import { MovieModule } from './movie.module';
 
 @Injectable({
-  providedIn: MovieModule
+  providedIn: 'root'
 })
 export class MovieService {
   private moviesUrl = './api/movies/movies.json';
