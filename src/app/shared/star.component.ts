@@ -7,11 +7,9 @@ import { Component, Input, OnChanges } from '@angular/core';
 })
 export class StarComponent implements OnChanges {
     @Input() rating: number;
-    starPercent: string;
+    starWidth = 0;
 
     ngOnChanges(): void {
-        // Convert x out of 5 starts
-        // to y out of 70px width
-        this.starPercent = (this.rating * 70 / 5) + 'px';
+        this.starWidth = this.rating * 75 / 5;
     }
 }

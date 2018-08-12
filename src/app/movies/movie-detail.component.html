@@ -1,11 +1,10 @@
-﻿<div class="panel panel-primary" *ngIf="movie">
-  <div class="panel-heading">
-    {{ pageTitle + ": " + movie.title }}
+﻿<div class="card">
+  <div class="card-header">
+    {{ pageTitle + (movie ? ": " + movie.title : '')}}
   </div>
 
-  <div class="panel-body">
-    <div class="has-error" *ngIf="errorMessage">{{errorMessage}}</div>
-
+  <div class="card-body"
+       *ngIf="movie">
     <div class="row">
       <div class="col-md-2">Description: </div>
       <div class="col-md-10">{{ movie.description }}</div>
@@ -36,20 +35,30 @@
       <div class="col-md-2">Average DVD Price: </div>
       <div class="col-md-10">{{ movie.price | currency:'USD':'symbol' }}</div>
     </div>
+
+    <div class="row">&nbsp;</div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <a class="btn btn-outline-secondary"
+           style="width:80px;margin-right:10px"
+           (click)="onBack()">
+          <i class="fa fa-chevron-left"></i> Back
+        </a>
+        <a class="btn btn-outline-primary"
+           style="width:80px;margin-right:10px"
+           [routerLink]="['/movies', movie.id, 'edit']">
+          Edit
+        </a>
+        <a class="btn btn-outline-primary"
+           [routerLink]="['/movies', movie.id, 'editReactive']">
+          Edit Reactive
+        </a>
+      </div>
+    </div>
   </div>
 
-  <div class="panel-footer">
-    <a class="btn btn-default" (click)="onBack()">
-      <i class="glyphicon glyphicon-chevron-left"></i> Back
-    </a>
-    <a class="btn btn-primary" 
-      style="width:80px;margin-left:10px" 
-      [routerLink]="['/movies', movie.id, 'edit']">
-      Edit
-    </a>
-    <a class="btn btn-primary" 
-      [routerLink]="['/movies', movie.id, 'editReactive']">
-      Edit Reactive
-    </a>
+  <div class="alert alert-danger"
+       *ngIf="errorMessage">{{errorMessage}}
   </div>
 </div>

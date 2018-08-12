@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
 import { IMovie } from './movie';
@@ -15,18 +15,20 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   getMovies(): Observable<IMovie[]> {
-    return this.http.get<IMovie[]>(this.moviesUrl).pipe(
-      tap(data => console.log(JSON.stringify(data))),
-      catchError(this.handleError)
-    );
+    return this.http.get<IMovie[]>(this.moviesUrl)
+      .pipe(
+        tap(data => console.log(JSON.stringify(data))),
+        catchError(this.handleError)
+      );
   }
 
   getMovie(id: number): Observable<IMovie> {
-    return this.http.get<IMovie[]>(this.moviesUrl).pipe(
-      map((movies: IMovie[]) => this.handleMap(movies, id)),
-      tap(data => console.log('Data: ' + JSON.stringify(data))),
-      catchError(this.handleError)
-    );
+    return this.http.get<IMovie[]>(this.moviesUrl)
+      .pipe(
+        map((movies: IMovie[]) => this.handleMap(movies, id)),
+        tap(data => console.log('Data: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
   }
 
   private handleError(err) {
