@@ -25,25 +25,25 @@ export class MovieEditReactiveComponent implements OnInit {
 
         // Initialize strings
         this.formError = {
-            'title': '',
-            'director': '',
-            'starRating': '',
-            'description': ''
+            title: '',
+            director: '',
+            starRating: '',
+            description: ''
         };
 
         this.validationMessages = {
-            'title': {
-                'required': 'Movie title is required',
-                'minlength': 'Movie title must be at least three characters.',
-                'maxlength': 'Movie title cannot exceed 50 characters.'
+            title: {
+                required: 'Movie title is required',
+                minlength: 'Movie title must be at least three characters.',
+                maxlength: 'Movie title cannot exceed 50 characters.'
             },
-            'director': {
-                'required': 'Director is required',
-                'minlength': 'Director must be at least 5 characters.',
-                'maxlength': 'Director cannot exceed 50 characters.'
+            director: {
+                required: 'Director is required',
+                minlength: 'Director must be at least 5 characters.',
+                maxlength: 'Director cannot exceed 50 characters.'
             },
-            'starRating': {
-                'range': 'Rate the movie between 1 (lowest) and 5 (highest).'
+            starRating: {
+                range: 'Rate the movie between 1 (lowest) and 5 (highest).'
             }
         };
     }
@@ -51,7 +51,8 @@ export class MovieEditReactiveComponent implements OnInit {
     ngOnInit(): void {
         this.route.params.subscribe(
             params => {
-                const id = +params['id'];
+                const paramName = 'id';
+                const id = +params[paramName];
                 this.getMovie(id);
             }
         );
@@ -60,7 +61,7 @@ export class MovieEditReactiveComponent implements OnInit {
     getMovie(id: number): void {
         this.movieService.getMovie(id).subscribe(
             movie => this.onMovieRetrieved(movie),
-            error => this.errorMessage = <any>error
+            error => this.errorMessage = error
         );
     }
 
@@ -74,14 +75,14 @@ export class MovieEditReactiveComponent implements OnInit {
         }
 
         this.editForm = this.fb.group({
-            'title': [this.movie.title, [Validators.required,
+            title: [this.movie.title, [Validators.required,
                                          Validators.minLength(3),
                                          Validators.maxLength(50)]],
-            'director': [this.movie.director, [Validators.required,
+            director: [this.movie.director, [Validators.required,
                                                Validators.minLength(5),
                                                Validators.maxLength(50)]],
-            'starRating': [this.movie.starRating, NumberValidators.range(1, 5)],
-            'description': [this.movie.description]
+            starRating: [this.movie.starRating, NumberValidators.range(1, 5)],
+            description: [this.movie.description]
         });
 
         this.editForm.valueChanges

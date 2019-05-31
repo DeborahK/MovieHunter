@@ -41,7 +41,8 @@ export class MovieListComponent implements OnInit {
           this.movies = movies;
           this.filteredMovies = this.performFilter(this.listFilter);
         },
-        (error: any) => this.errorMessage = <any>error);
+        (error: any) => this.errorMessage = error
+      );
   }
 
   performFilter(filterBy: string): IMovie[] {

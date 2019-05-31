@@ -15,8 +15,8 @@ export class MovieEditComponent implements OnInit {
     errorMessage: string;
 
     constructor(private movieService: MovieService,
-        private router: Router,
-        private route: ActivatedRoute) {
+                private router: Router,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
@@ -31,8 +31,8 @@ export class MovieEditComponent implements OnInit {
     getMovie(id: number): void {
         this.movieService.getMovie(id)
             .subscribe(
-            movie => this.onMovieRetrieved(movie),
-            error => this.errorMessage = <any>error);
+                movie => this.onMovieRetrieved(movie),
+                error => this.errorMessage = error);
     }
 
     onMovieRetrieved(movie: IMovie): void {

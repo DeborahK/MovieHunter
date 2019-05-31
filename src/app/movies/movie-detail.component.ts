@@ -27,7 +27,8 @@ export class MovieDetailComponent implements OnInit {
     this.movieService.getMovie(id)
       .subscribe(
         (movie: IMovie) => this.movie = movie,
-        (error: any) => this.errorMessage = <any>error);
+        (error: any) => this.errorMessage = error
+      );
   }
 
   onBack(): void {

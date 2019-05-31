@@ -6,9 +6,12 @@ import { Component } from '@angular/core';
         <nav class="navbar navbar-expand navbar-light bg-light">
           <a class="navbar-brand">{{pageTitle}}</a>
           <ul class="nav nav-pills">
-            <li><a class="nav-link"  [routerLink]="['/welcome']">Home</a></li>
-            <li><a class="nav-link"  [routerLink]="['/movies']">Movie List</a></li>
-            <li><a class="nav-link"  [routerLink]="['/movies', 0, 'edit']">Add Movie</a></li>
+            <li><a class="nav-link" routerLinkActive='active'
+                   [routerLink]="['/welcome']">Home</a></li>
+            <li><a class="nav-link" routerLinkActive='active' [routerLinkActiveOptions]="{exact: true}"
+                   [routerLink]="['/movies']">Movie List</a></li>
+            <li><a class="nav-link" routerLinkActive='active'
+                   [routerLink]="['/movies', 0, 'edit']">Add Movie</a></li>
           </ul>
         </nav>
         <div class="container">
