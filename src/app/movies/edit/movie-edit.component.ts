@@ -30,9 +30,10 @@ export class MovieEditComponent implements OnInit {
 
     getMovie(id: number): void {
         this.movieService.getMovie(id)
-            .subscribe(
-                movie => this.onMovieRetrieved(movie),
-                error => this.errorMessage = error);
+            .subscribe({
+                next: movie => this.onMovieRetrieved(movie),
+                error: err => this.errorMessage = err
+            });
     }
 
     onMovieRetrieved(movie: IMovie): void {

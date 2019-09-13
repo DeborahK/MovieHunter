@@ -25,10 +25,10 @@ export class MovieDetailComponent implements OnInit {
 
   getMovie(id: number): void {
     this.movieService.getMovie(id)
-      .subscribe(
-        (movie: IMovie) => this.movie = movie,
-        (error: any) => this.errorMessage = error
-      );
+      .subscribe({
+        next: (movie: IMovie) => this.movie = movie,
+        error: err => this.errorMessage = err
+      });
   }
 
   onBack(): void {

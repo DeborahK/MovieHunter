@@ -36,13 +36,13 @@ export class MovieListComponent implements OnInit {
 
   getMovies(): void {
     this.movieService.getMovies()
-      .subscribe(
-        (movies: IMovie[]) => {
+    .subscribe({
+        next: (movies: IMovie[]) => {
           this.movies = movies;
           this.filteredMovies = this.performFilter(this.listFilter);
         },
-        (error: any) => this.errorMessage = error
-      );
+        error: err => this.errorMessage = err
+    });
   }
 
   performFilter(filterBy: string): IMovie[] {
